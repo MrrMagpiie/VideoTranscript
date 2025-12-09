@@ -124,7 +124,7 @@ if __name__ == '__main__':
     # --- 2. CHUNKING PHASE ---
     #use ffmpeg to chunk the video
     video_path = os.path.join(OUTPUT_PATH, f'{VIDEO_ID}/{VIDEO_ID}_video.mp4')
-    chunk_path = chunk_with_progress(video_path,segment_time=60)
+    #chunk_path = chunk_with_progress(video_path,segment_time=60)
 
     monitor.stop_task('ffmpeg_chunking')
 
@@ -132,15 +132,17 @@ if __name__ == '__main__':
 
         # --- 3. TALKNET PHASE ---
     # use talknet to process the video chunks
-    processed_chunks = talknet_queue(chunk_path)
+    #processed_chunks = talknet_queue(chunk_path)
     monitor.stop_task('Talknet_Process')
     
     # Setup Paths
     '''video_files = get_chunks(chunk_path)
     processed_chunks = get_chunk_folders(video_files)
     print(processed_chunks)'''
-    
-
+    processed_chunks = []
+    for chunk in range(10,31):
+        processed_chunks.append(f'/var/home/magpie/Development/SerialKiller_2/output/BvWOje46Xp8/chunks/chunk_0{chunk}')
+    print(processed_chunks)
     global_face_registry = os.path.join(OUTPUT_PATH,f'{VIDEO_ID}/global_faces.pkl')
     training_registry = os.path.join(OUTPUT_PATH,f'{VIDEO_ID}/global_training_memory.pkl')
     

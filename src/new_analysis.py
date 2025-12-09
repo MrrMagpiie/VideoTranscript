@@ -263,7 +263,7 @@ def train_transcript(chunk_path,memory_file):
         
         # 4. Unknown
         else:
-            display_label = "Unidetified_Speaker"
+            display_label = "Unidentified_Speaker"
 
         final_output.append({
             "start": round(word_obj['start'], 2),
